@@ -16,7 +16,8 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
-  ADD_DONOR
+  ADD_DONOR,
+  DONOR_ADDED
 } from './constants';
 
 // The initial state of the App
@@ -24,6 +25,7 @@ const initialState = fromJS({
   loading: false,
   error: false,
   currentUser: false,
+  message: "",
   userData: {
     repositories: false,
   },
@@ -31,6 +33,11 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case DONOR_ADDED:
+      console.log(action.payload);
+      return state
+        .set('message', action.payload)
+        .set('loading', true)
     case ADD_DONOR:
       return  state
       .set('loading', true)

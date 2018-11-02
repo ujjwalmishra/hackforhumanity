@@ -19,12 +19,21 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-  ADD_DONOR
+  ADD_DONOR,
+  DONOR_ADDED
 } from './constants';
 
 export function addDonor(payload) {
   return {
     type: ADD_DONOR,
+    payload: payload
+  };
+}
+
+export function donorAdded(payload) {
+  //console.log(payload);
+  return {
+    type: DONOR_ADDED,
     payload: payload
   };
 }

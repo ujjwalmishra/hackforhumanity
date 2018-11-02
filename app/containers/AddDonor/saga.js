@@ -4,7 +4,7 @@
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { ADD_DONOR } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { reposLoaded, repoLoadingError, donorAdded } from 'containers/App/actions';
 
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/AddDonor/selectors';
@@ -12,15 +12,15 @@ import { makeSelectUsername } from 'containers/AddDonor/selectors';
 /**
  * Github repos request/response handler
  */
-export function* addDonor() {
+export function* addDonor(action) {
   // Select username from store
   const username = yield select(makeSelectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  const requestURL = `https://api.backend.com`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    //const repos = yield call(request, requestURL, action.);
+    yield put(donorAdded("Donor added successsfuly"));
   } catch (err) {
     yield put(repoLoadingError(err));
   }

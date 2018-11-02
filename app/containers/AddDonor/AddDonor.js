@@ -21,7 +21,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
   }
 
   render() {
-    const { loading, error, repos } = this.props;
+    const { loading, error, repos, message } = this.props;
     const reposListProps = {
       loading,
       error,
@@ -36,7 +36,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
         </Helmet>
         <div className="donor-page">
           <section>
-            <h2>Add Donor</h2>
+            <h2>Add Donor{this.props.message}</h2>
             <form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="firstname">
 

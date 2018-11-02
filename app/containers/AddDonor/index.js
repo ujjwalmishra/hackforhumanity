@@ -8,9 +8,9 @@ import {
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
+import { addDonor } from '../App/actions';
 import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { makeSelectUsername, makeSelectDonorAdded } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import AddDonor from './AddDonor';
@@ -19,7 +19,10 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(loadRepos());
+    console.log(evt.target[0].form);
+    let data = new FormData(evt.target);
+    console.log(data);
+    dispatch(addDonor(data));
   }
 });
 
@@ -27,7 +30,8 @@ const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
-  error: makeSelectError()
+  error: makeSelectError(),
+  message: makeSelectDonorAdded()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
