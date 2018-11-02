@@ -19,7 +19,15 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  ADD_DONOR
 } from './constants';
+
+export function addDonor(payload) {
+  return {
+    type: ADD_DONOR,
+    payload: payload
+  };
+}
 
 /**
  * Load the repositories, this action starts the request saga

@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import AddDonor from 'containers/AddDonor/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -29,6 +30,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/features" component={FeaturePage} />
+      <Route path="/adddonor" component={AddDonor} />
       <Route path="" component={NotFoundPage} />
     </Switch>
     <Footer />
