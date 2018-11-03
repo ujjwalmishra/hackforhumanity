@@ -108,7 +108,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
           </div>
           
         <section className="results" >
-        <React.Fragment>
+        {/* <React.Fragment>
           {
             donors.map(item => (
               <label key={item.id} className="containerc">
@@ -118,7 +118,17 @@ export default class Search extends React.PureComponent { // eslint-disable-line
               </label>
             ))
           }
-        </React.Fragment>
+        </React.Fragment> */}
+        <label className="containerc">
+          John Miller
+          <input name="1" type="checkbox" />
+          <span className="checkmark"></span>
+        </label>
+        <label className="containerc">
+          Sam 
+          <input name="2" type="checkbox" />
+          <span className="checkmark"></span>
+        </label>
         <div className="actions" donors={donors.length} >
         <button type="button" class="btn btn-success">Send Newsletter</button>
         <button type="button" class="btn btn-success">Send text</button>
