@@ -19,10 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    console.log(evt.target[0].form.firstname.value);
-    let data = new FormData(evt.target[0].form.lastname);
-    console.log(data);
-    dispatch(addDonor(data));
+    
+    dispatch(askDonation());
   }
 });
 
