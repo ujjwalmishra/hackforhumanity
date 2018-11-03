@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import AddDonor from 'containers/AddDonor/Loadable';
+import Profile from 'containers/Profile/Loadable';
 import AskDonation from 'containers/AskDonation/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -33,6 +34,7 @@ const App = () => (
       <Route exact path="/" component={HomePage} />
       <Route path="/features" component={FeaturePage} />
       <Route path="/adddonor" component={AddDonor} />
+      <Route path="/profile" component={Profile} />
       <Route path="/askdonation" component={AskDonation} />
       <Route path="" component={NotFoundPage} />
     </Switch>

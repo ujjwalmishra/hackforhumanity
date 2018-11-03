@@ -8,18 +8,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
-import {Typeahead} from 'react-bootstrap-typeahead';
 import './style.scss';
 
 export default class AddDonor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    // if (this.props.username && this.props.username.trim().length > 0) {
-    //   this.props.onSubmitForm();
-    // }
-  }
+  // componentDidMount() {
+  //   // if (this.props.username && this.props.username.trim().length > 0) {
+  //   //   this.props.onSubmitForm();
+  //   // }
+  // }
 
   render() {
     const { loading, error, repos, message } = this.props;
