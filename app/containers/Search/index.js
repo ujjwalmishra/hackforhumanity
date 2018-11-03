@@ -8,32 +8,32 @@ import {
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
-import { askDonation } from '../App/actions';
+import { searchDonors } from '../App/actions';
 import { changeUsername } from './actions';
-import { makeSelectUsername, makeSelectDonorAdded } from './selectors';
+import { makeSelectUsername, makeSelectDonorAdded, makeSelectDonors } from './selectors';
 import reducer from './reducer';
-import saga from './saga';
-import AskDonation from './AskDonation';
+import saga, { search } from './saga';
+import Search from './Search';
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    
-    dispatch(askDonation());
+    console.log("dispa");
+    dispatch(searchDonors());
   }
 });
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   error: makeSelectError(),
-  message: makeSelectDonorAdded()
+  donors: makeSelectDonors()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'askdonation', reducer });
-const withSaga = injectSaga({ key: 'askdonation', saga });
+const withReducer = injectReducer({ key: 'search', reducer });
+const withSaga = injectSaga({ key: 'search', saga });
 
-export default compose(withReducer, withSaga, withConnect)(AskDonation);
+export default compose(withReducer, withSaga, withConnect)(Search);
 export { mapDispatchToProps };

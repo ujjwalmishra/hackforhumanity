@@ -38,8 +38,8 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
           <section>
             <h2>Ask Donation{this.props.message}</h2>
             <form onSubmit={this.props.onSubmitForm}>
-              <div class="col-sm-12">
-
+              <div className="col-sm-12">
+              Search Users:
               <Typeahead
                 multiple
                 placeholder="Search User"
@@ -50,26 +50,26 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
                   id:1, fullName: "John Miller", firstName: "John", lastName : "Miller", email: "john@email.com"
                 },
                 {
-                  id:2, fullName: "Dolan Trump", firstName: "Dolan", lastName : "Trump", email: "john@email.com"
+                  id:2, fullName: "Dolan Trump", firstName: "Dolan", lastName : "Trump", email: "dolan@email.com"
                 },
                 {
-                  id:3, fullName: "Sam Dicosta", firstName: "Sam", lastName : "Dicosta", email: "john@email.com"
+                  id:3, fullName: "Sam Dicosta", firstName: "Sam", lastName : "Dicosta", email: "sam@email.com"
                 }]}
                 filterBy={['firstName', 'lastName', 'email', 'fullName']}
                 labelKey="fullName"
               />
               </div>
-              <label htmlFor="lastname">
-
+              <div className="col-sm-6">
+                <div>Amount</div>
                 <input
                   id="lastname"
-                  type="text"
+                  type="number"
                   placeholder="Last Name"
                   value={this.props.lastname}
                 />
-                </label>
+                </div>
                 <div class="col-sm-12">
-
+             <div> Select Event </div>
               <select name="type" id="type" class="col-sm-6">
                 <option value="volvo">Volvo</option>
                 <option value="saab">Saab</option>

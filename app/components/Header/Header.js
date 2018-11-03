@@ -13,8 +13,8 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           <Link className="router-link" to="/">
             Home
           </Link>
-          <Link className="router-link" to="/features">
-            Features
+          <Link className="router-link" to="/search">
+            Search
           </Link>
           <Link className="router-link" to="/adddonor">
             Add Donor

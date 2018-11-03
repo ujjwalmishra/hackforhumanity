@@ -21,12 +21,28 @@ import {
   LOAD_REPOS_ERROR,
   ADD_DONOR,
   DONOR_ADDED,
-  LOGIN_USER
+  LOGIN_USER,
+  ASK_DONATION,
+  SEARCH_DONOR
 } from './constants';
+
+export function searchDonors(payload) {
+  return {
+    type: SEARCH_DONOR,
+    payload: payload
+  };
+}
 
 export function addDonor(payload) {
   return {
     type: ADD_DONOR,
+    payload: payload
+  };
+}
+
+export function askDonation(payload) {
+  return {
+    type: ASK_DONATION,
     payload: payload
   };
 }

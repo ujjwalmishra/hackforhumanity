@@ -3,22 +3,24 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { ASK_DONATION } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError, donorAdded, askedDonation } from 'containers/App/actions';
+import { SEARCH_DONOR } from 'containers/App/constants';
+import { searchDonors, repoLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 
 /**
  * Github repos request/response handler
  */
-export function* askDonation(action) {
+export function* searchDonor(action) {
   // Select username from store
-  const requestURL = `http://localhost:3001/`;
+  const requestURL = `http://localhost:3000/data`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(askedDonation("Text sent succsecfully"));
+    const data = yield call(request, requestURL);
+  
+    console.log("dispatching")
+    yield put(searchDonors(data.donors));
   } catch (err) {
     yield put(repoLoadingError(err));
   }
@@ -32,5 +34,5 @@ export default function* githubData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  yield takeLatest(ASK_DONATION, askDonation);
+  yield takeLatest(SEARCH_DONOR, searchDonor);
 }

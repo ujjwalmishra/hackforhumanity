@@ -18,7 +18,8 @@ import {
   LOAD_REPOS_ERROR,
   ADD_DONOR,
   DONOR_ADDED,
-  LOGIN_USER
+  LOGIN_USER,
+  SEARCH_DONOR
 } from './constants';
 
 // The initial state of the App
@@ -30,10 +31,17 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  donors: []
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case SEARCH_DONOR:
+      console.log(action.payload);
+      return  state
+      .set('loading', true)
+      .set('error', false)
+      .set('donors', action.payload);
     case LOGIN_USER: 
       return state
         .set('loading', false)

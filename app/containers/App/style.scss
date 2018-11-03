@@ -6,3 +6,13 @@
 //   padding: 0 16px;
 //   flex-direction: column;
 // }
+
+button, input, select, textarea {
+  /* background-color: transparent; */
+  /* border-style: none; */
+  color: inherit;
+  font-size: 1em;
+  margin: 0;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+}
