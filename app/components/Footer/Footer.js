@@ -3,7 +3,7 @@ import './style.scss';
 
 const Footer = () => (
   <footer>
-    <section>Minnie's Food Pantry</section>
+    <section className="text-center col-sm-12"><span> © Copyright Minnie's Food Pantry </span></section>
      </footer>
 );
 

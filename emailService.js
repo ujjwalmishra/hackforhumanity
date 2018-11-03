@@ -9,6 +9,23 @@ app.use(function(req, res, next) {
     next();
   });
   
+const sendEmail = function(res) {
+    const sendmail = require('sendmail')();
+ 
+sendmail({
+    from: 'erica@minniefoodpantry.com',
+    to: 'fouyen@gmail.com',
+    subject: 'Christmas Give Away 20 Dec, 2018',
+    html: 'Please contribute to upcoming event by donating here "http://donation.com/pay"',
+  }, function(err, reply) {
+    console.log(err && err.stack);
+    console.dir(reply);
+    if(!err) {
+        res.send('Email sent successfully')    
+    }
+});
+}
+
 const sendText = function(res) {
     var accountSid = 'ACc4809089bb57042b52eb57f846d04f51'; // Your Account SID from www.twilio.com/console
 var authToken = 'fdde7fa9a994973ea3b7e679a694781d';   // Your Auth Token from www.twilio.com/console
@@ -30,6 +47,10 @@ res.send('Text sent successfully')
 }
 app.get('/', (req, res) => {
     sendText(res);
+})
+
+app.get('/email', (req, res) => {
+    sendEmail(res);
 })
 
 

@@ -31,11 +31,11 @@ class MainPanel extends React.Component {
             <p>{info.email} | {info.phone}</p>
           <hr />
             Interaction history
-            <p>Oct 1, 2018 - Donor Added</p>  
-            <p>Oct 3, 2018 - $50 donation toward food drive x made</p>  
-            <p>Nov 13, 2018 - Upcoming events newsletter sent</p>  
-            <p>Nov 15, 2018 - Request for donation via  text sent</p>  
-            <p>Nov 16, 2018 - $100 donation recieved</p>  
+            <p className="int">Oct 1, 2018 - Donor Added</p>  
+            <p className="int">Oct 3, 2018 - $50 donation toward food drive x made</p>  
+            <p className="int">Nov 13, 2018 - Upcoming events newsletter sent</p>  
+            <p className="int">Nov 15, 2018 - Request for donation via  text sent</p>  
+            <p className="int">Nov 16, 2018 - $100 donation recieved</p>  
           <hr />
             Interests
             <p>Christmas Give Away</p>
@@ -94,7 +94,7 @@ export default class Profile extends React.PureComponent { // eslint-disable-lin
 
     return (
       <article>
-      <h1>Profile Page</h1>
+      <h1 className="col-sm-6 offset-sm-3 text-center">Profile Page</h1>
       <div id="user-profile">
       <MainPanel info={user.basicInfo} />
       </div>

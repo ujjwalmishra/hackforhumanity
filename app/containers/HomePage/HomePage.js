@@ -16,9 +16,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
+
   }
 
 
@@ -30,7 +28,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       repos,
     };
     if(this.props.username) {
-      return <Redirect to='/adddonor' />
+      return <Redirect to='/search' />
     }
     else {
       return (
@@ -39,33 +37,35 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <title>Login Page</title>
             <meta name="description" content="A React.js Boilerplate application homepage" />
           </Helmet>
-          <div className="home-page">
-            <section>
+          <div className="home-page login col-sm-6 offset-sm-3">
+            <section className="text-center">
               <h2>Login/Registration</h2>
               <form onSubmit={this.props.onSubmitForm}>
-                <label htmlFor="username">
+                <label htmlFor="username" className="col-sm-12">
                 Username:
                   <input
                     id="username"
                     type="text"
-                    placeholder="Erica"
+                    placeholder="username"
                     name="username"
                     value={this.props.username}
                     onChange={this.props.onChangeUsername}
                   />
                 </label>
-                <label htmlFor="password">
+                <label htmlFor="password" className="col-sm-12"> 
                 Password:
                   <input
                     id="password"
                     type="password"
+                    
+                    placeholder="password"
                     value={this.props.password}
                     onChange={this.props.onChangepassword}
                   />
                 </label>
                 <input
                   type="submit"
-                  className="btn btn-primary float-right"
+                  className="btn btn-primary"
                   value="Submit" onClick={this.login} />
               </form>
               <ReposList {...reposListProps} />

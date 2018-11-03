@@ -34,12 +34,12 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
           <title>Add Donor</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div className="donor-page">
+        <div className="donor-page col-sm-6 offset-sm-3">
           <section>
             <h2>Add Donor{this.props.message}</h2>
             <form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="firstname">
-
+First Name
                 <input
                   id="firstname"
                   type="text"
@@ -49,7 +49,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
                 />
               </label>
               <label htmlFor="lastname">
-
+Last Name
                 <input
                   id="lastname"
                   type="text"
@@ -58,16 +58,16 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
                 />
                 </label>
                 <label htmlFor="type">
-
+              Interest
               <select name="type" id="type">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+                <option value="volvo">Christmas Give Away</option>
+                <option value="saab">Stock the Shelf</option>
+                <option value="opel">Summer Launch</option>
+                <option value="audi">Our Daily Bread</option>
               </select>
                 </label>
                 <label htmlFor="company">
-
+Company
 <input
   id="company"
   type="text"
@@ -76,7 +76,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="jobtitle">
-
+Title
 <input
   id="jobtitle"
   type="text"
@@ -85,7 +85,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="address">
-
+Address
 <input
   id="address"
   type="text"
@@ -94,7 +94,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="city">
-
+City
 <input
   id="city"
   type="text"
@@ -103,7 +103,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="postal">
-
+Zip Code
 <input
   id="postal"
   type="text"
@@ -112,7 +112,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="email">
-
+Email
 <input
   id="email"
   type="email"
@@ -121,7 +121,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="phone">
-
+Phone
 <input
   id="phone"
   type="number"
@@ -129,17 +129,9 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
   value={this.props.phone}
 />
 </label>
-<label htmlFor="address">
 
-<input
-  id="address"
-  type="text"
-  placeholder="Address"
-  value={this.props.address}
-/>
-</label>
 <label htmlFor="gender">
-
+Gender
 <input
   id="gender"
   type="text"
@@ -148,7 +140,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 />
 </label>
 <label htmlFor="birthday">
-
+Birthday
 <input
   id="birthday"
   type="text"
@@ -158,7 +150,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
 </label>
 <input
           type="submit"
-          className="btn btn-primary float-right"
+          className="btn btn-primary "
           value="Submit"/>
             </form>
           </section>

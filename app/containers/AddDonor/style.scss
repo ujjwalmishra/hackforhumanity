@@ -30,3 +30,19 @@
     margin-left: 0.4em;
   }
 }
+
+label {
+  width: 100%;
+  display: block;
+  clear:both;
+}
+
+.donor-page input,.donor-page select {
+  width: 100%;
+  display: block;
+}
+
+// .donor-page.btn input{
+//   width: 30%;
+// }
+

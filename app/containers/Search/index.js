@@ -21,6 +21,10 @@ const mapDispatchToProps = (dispatch) => ({
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     console.log("dispa");
     dispatch(searchDonors());
+  },
+  sendEmail: (evt) => {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    console.log("sending email")
   }
 });
 

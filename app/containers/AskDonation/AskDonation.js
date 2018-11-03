@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
+import {Typeahead} from 'react-bootstrap-typeahead';
 import './style.scss';
 
 export default class AddDonor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -34,7 +35,7 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
           <title>Ask Donation</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div className="askdonor-page">
+        <div className="askdonor-page-p col-sm-6 offset-sm-3">
           <section>
             <h2>Ask Donation{this.props.message}</h2>
             <form onSubmit={this.props.onSubmitForm}>
@@ -47,43 +48,44 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
                   
                 }}
                 options={[{
-                  id:1, fullName: "John Miller", firstName: "John", lastName : "Miller", email: "john@email.com"
+                  id:1,phone: "+123232323" ,fullName: "John Miller", firstName: "John", lastName : "Miller", email: "john@email.com"
                 },
                 {
-                  id:2, fullName: "Dolan Trump", firstName: "Dolan", lastName : "Trump", email: "dolan@email.com"
+                  id:2, phone: "+1453232323",fullName: "Dolan Trump", firstName: "Dolan", lastName : "Trump", email: "dolan@email.com"
                 },
                 {
-                  id:3, fullName: "Sam Dicosta", firstName: "Sam", lastName : "Dicosta", email: "sam@email.com"
+                  id:3, phone: "+168232323", fullName: "Sam Dicosta", firstName: "Sam", lastName : "Dicosta", email: "sam@email.com"
                 }]}
-                filterBy={['firstName', 'lastName', 'email', 'fullName']}
+                filterBy={['firstName', 'lastName', 'email', 'fullName', 'phone']}
                 labelKey="fullName"
               />
               </div>
-              <div className="col-sm-6">
+              <div className="col-sm-12">
                 <div>Amount</div>
                 <input
                   id="lastname"
                   type="number"
-                  placeholder="Last Name"
+                  placeholder=" Amount"
                   value={this.props.lastname}
                 />
                 </div>
                 <div class="col-sm-12">
              <div> Select Event </div>
-              <select name="type" id="type" class="col-sm-6">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <select name="type" id="type" class="col-sm-12">
+                <option value="volvo">Feed Just One</option>
+                <option value="saab">Summer Launch Event</option>
+                <option value="opel">Our Daily Bread</option>
+                <option value="audi">Stock The Shelf</option>
               </select>
 
                 </div>
 
-
+<div className="text-center">
 <input
           type="submit"
-          className="btn btn-primary float-right"
+          className="btn btn-primary"
           value="Ask"/>
+          </div>
             </form>
           </section>
         </div>

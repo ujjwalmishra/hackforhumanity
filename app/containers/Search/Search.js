@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
 import {Typeahead} from 'react-bootstrap-typeahead';
-import Checkbox from 'components/Checkbox'
+import Checkbox from 'components/Checkbox';
+import axios from 'axios';
 import './style.scss';
 
 export default class Search extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -33,6 +34,13 @@ export default class Search extends React.PureComponent { // eslint-disable-line
     this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
     console.log(this.state.checkedItems.get("a"));
   }
+
+  sendEmail(e) {
+    axios.get(`http://localhost:3001/email`)
+    .then(res => {
+      console.log(res);
+    });
+  }
   
   componentDidMount() {
     // if (this.props.username && this.props.username.trim().length > 0) {
@@ -55,8 +63,8 @@ export default class Search extends React.PureComponent { // eslint-disable-line
             <title>Ask Donation</title>
             <meta name="description" content="A React.js Boilerplate application homepage" />
           </Helmet>
-          <div className="askdonor-page col-sm-12">
-            <section>
+          <div className="searchdonor-page col-sm-12 text-center">
+            <section className="text-center center">
               <h2>Search Donors{this.props.message}</h2>
               <form onSubmit={this.props.onSubmitForm}>
                 <div className="col-sm-12">
@@ -70,12 +78,14 @@ export default class Search extends React.PureComponent { // eslint-disable-line
                   <option value="5">Other</option>
                 </select>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-12">
                   <div>Amount Range</div>
                   <input
                     id=""
                     type="number"
                     name="minimum"
+                    
+                    className="gap"
                     placeholder="Minimum"
                     value={this.props.minimum}
                   />
@@ -83,6 +93,8 @@ export default class Search extends React.PureComponent { // eslint-disable-line
                     id=""
                     type="number"
                     name="maximum"
+                    
+                    className="gap"
                     placeholder="Maximum"
                     value={this.props.maximum}
                   />
@@ -101,13 +113,13 @@ export default class Search extends React.PureComponent { // eslint-disable-line
   
   <input
             type="submit"
-            className="btn btn-primary float-left"
+            className="btn btn-primary"
             value="Search"/>
               </form>
             </section>
           </div>
           
-        <section className="results" >
+        <section className="results col-sm-6 offset-sm-3" >
         {/* <React.Fragment>
           {
             donors.map(item => (
@@ -119,6 +131,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
             ))
           }
         </React.Fragment> */}
+        Donors
         <label className="containerc">
           John Miller
           <input name="1" type="checkbox" />
@@ -130,7 +143,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
           <span className="checkmark"></span>
         </label>
         <div className="actions" donors={donors.length} >
-        <button type="button" class="btn btn-success">Send Newsletter</button>
+        <button type="button" class="btn btn-success" onClick={this.sendEmail}>Send Newsletter</button>
         <button type="button" class="btn btn-success">Send text</button>
         <button type="button" class="btn btn-success">Ask Donation Via text</button>
         </div>
@@ -145,7 +158,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
             <title>Ask Donation</title>
             <meta name="description" content="A React.js Boilerplate application homepage" />
           </Helmet>
-          <div className="askdonor-page col-sm-12">
+          <div className="searchdonor-page col-sm-12 text-center">
             <section>
               <h2>Search Donors{this.props.message}</h2>
               <form onSubmit={this.props.onSubmitForm}>
@@ -160,12 +173,13 @@ export default class Search extends React.PureComponent { // eslint-disable-line
                   <option value="5">Other</option>
                 </select>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-12">
                   <div>Amount Range</div>
                   <input
                     id=""
                     type="number"
                     name="minimum"
+                    className="gap"
                     placeholder="Minimum"
                     value={this.props.minimum}
                   />
@@ -173,6 +187,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
                     id=""
                     type="number"
                     name="maximum"
+                    className="gap"
                     placeholder="Maximum"
                     value={this.props.maximum}
                   />
@@ -191,7 +206,7 @@ export default class Search extends React.PureComponent { // eslint-disable-line
   
   <input
             type="submit"
-            className="btn btn-primary float-left"
+            className="btn btn-primary "
             value="Search"/>
               </form>
             </section>
