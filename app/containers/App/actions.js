@@ -22,8 +22,16 @@ import {
   ADD_DONOR,
   DONOR_ADDED,
   LOGIN_USER,
-  ASK_DONATION
+  ASK_DONATION,
+  SEARCH_DONOR
 } from './constants';
+
+export function searchDonors(payload) {
+  return {
+    type: SEARCH_DONOR,
+    payload: payload
+  };
+}
 
 export function addDonor(payload) {
   return {

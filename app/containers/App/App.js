@@ -14,6 +14,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import AddDonor from 'containers/AddDonor/Loadable';
 import AskDonation from 'containers/AskDonation/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
+import Search from 'containers/Search/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -31,7 +32,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/features" component={FeaturePage} />
+      <Route path="/search" component={Search} />
       <Route path="/adddonor" component={AddDonor} />
       <Route path="/askdonation" component={AskDonation} />
       <Route path="" component={NotFoundPage} />
