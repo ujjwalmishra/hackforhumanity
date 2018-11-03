@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import AddDonor from 'containers/AddDonor/Loadable';
+import AskDonation from 'containers/AskDonation/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -19,7 +20,8 @@ import Footer from 'components/Footer';
 import './style.scss';
 
 const App = () => (
-  <div className="app-wrapper">
+  <div class="container">
+  <div className="app-wrapper col-sm-12">
     <Helmet
       titleTemplate="%s - React.js Boilerplate"
       defaultTitle="React.js Boilerplate"
@@ -31,9 +33,11 @@ const App = () => (
       <Route exact path="/" component={HomePage} />
       <Route path="/features" component={FeaturePage} />
       <Route path="/adddonor" component={AddDonor} />
+      <Route path="/askdonation" component={AskDonation} />
       <Route path="" component={NotFoundPage} />
     </Switch>
     <Footer />
+  </div>
   </div>
 );
 

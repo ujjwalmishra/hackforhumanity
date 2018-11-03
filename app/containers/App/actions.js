@@ -20,7 +20,8 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
   ADD_DONOR,
-  DONOR_ADDED
+  DONOR_ADDED,
+  LOGIN_USER
 } from './constants';
 
 export function addDonor(payload) {
@@ -46,6 +47,15 @@ export function donorAdded(payload) {
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
+  };
+}
+
+export function loginUser(username) {
+  console.log(username);
+  return {
+    type: LOGIN_USER,
+    username: username,
+    name: "John Miller"
   };
 }
 

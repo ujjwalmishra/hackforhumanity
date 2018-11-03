@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
+import {Typeahead} from 'react-bootstrap-typeahead';
 import './style.scss';
 
 export default class AddDonor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -31,23 +32,34 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
     return (
       <article>
         <Helmet>
-          <title>Add Donor</title>
+          <title>Ask Donation</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div className="donor-page">
+        <div className="askdonor-page">
           <section>
-            <h2>Add Donor{this.props.message}</h2>
+            <h2>Ask Donation{this.props.message}</h2>
             <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="firstname">
+              <div class="col-sm-12">
 
-                <input
-                  id="firstname"
-                  type="text"
-                  name="firstname"
-                  placeholder="First Name"
-                  value={this.props.firstname}
-                />
-              </label>
+              <Typeahead
+                multiple
+                placeholder="Search User"
+                onChange={(selected) => {
+                  
+                }}
+                options={[{
+                  id:1, fullName: "John Miller", firstName: "John", lastName : "Miller", email: "john@email.com"
+                },
+                {
+                  id:2, fullName: "Dolan Trump", firstName: "Dolan", lastName : "Trump", email: "john@email.com"
+                },
+                {
+                  id:3, fullName: "Sam Dicosta", firstName: "Sam", lastName : "Dicosta", email: "john@email.com"
+                }]}
+                filterBy={['firstName', 'lastName', 'email', 'fullName']}
+                labelKey="fullName"
+              />
+              </div>
               <label htmlFor="lastname">
 
                 <input
@@ -57,109 +69,22 @@ export default class AddDonor extends React.PureComponent { // eslint-disable-li
                   value={this.props.lastname}
                 />
                 </label>
-                <label htmlFor="type">
+                <div class="col-sm-12">
 
-              <select name="type" id="type">
+              <select name="type" id="type" class="col-sm-6">
                 <option value="volvo">Volvo</option>
                 <option value="saab">Saab</option>
                 <option value="opel">Opel</option>
                 <option value="audi">Audi</option>
               </select>
-                </label>
-                <label htmlFor="company">
 
-<input
-  id="company"
-  type="text"
-  placeholder="Company"
-  value={this.props.company}
-/>
-</label>
-<label htmlFor="jobtitle">
+                </div>
 
-<input
-  id="jobtitle"
-  type="text"
-  placeholder="JOb Title"
-  value={this.props.jobtitle}
-/>
-</label>
-<label htmlFor="address">
 
-<input
-  id="address"
-  type="text"
-  placeholder="Address"
-  value={this.props.address}
-/>
-</label>
-<label htmlFor="city">
-
-<input
-  id="city"
-  type="text"
-  placeholder="City"
-  value={this.props.city}
-/>
-</label>
-<label htmlFor="postal">
-
-<input
-  id="postal"
-  type="text"
-  placeholder="Postal Code"
-  value={this.props.postal}
-/>
-</label>
-<label htmlFor="email">
-
-<input
-  id="email"
-  type="email"
-  placeholder="Email"
-  value={this.props.email}
-/>
-</label>
-<label htmlFor="phone">
-
-<input
-  id="phone"
-  type="number"
-  placeholder="Phone"
-  value={this.props.phone}
-/>
-</label>
-<label htmlFor="address">
-
-<input
-  id="address"
-  type="text"
-  placeholder="Address"
-  value={this.props.address}
-/>
-</label>
-<label htmlFor="gender">
-
-<input
-  id="gender"
-  type="text"
-  placeholder="Gender"
-  value={this.props.gender}
-/>
-</label>
-<label htmlFor="birthday">
-
-<input
-  id="birthday"
-  type="text"
-  placeholder="Birthday"
-  value={this.props.bithday}
-/>
-</label>
 <input
           type="submit"
           className="btn btn-primary float-right"
-          value="Submit"/>
+          value="Ask"/>
             </form>
           </section>
         </div>

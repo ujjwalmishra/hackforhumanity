@@ -3,30 +3,28 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { ADD_DONOR } from 'containers/App/constants';
+import { reposLoaded, repoLoadingError, donorAdded } from 'containers/App/actions';
 
 import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
-import { loginUser } from '../App/actions';
+import { makeSelectUsername } from 'containers/AddDonor/selectors';
 
 /**
  * Github repos request/response handler
  */
-export function* getRepos() {
+export function* addDonor(action) {
   // Select username from store
   const username = yield select(makeSelectUsername());
   const requestURL = `https://api.backend.com`;
 
   try {
     // Call our request helper (see 'utils/request')
-    // const repos = yield call(request, requestURL);
-    yield put(loginUser(username));
+    //const repos = yield call(request, requestURL, action.);
+    yield put(donorAdded("Donor added successsfuly"));
   } catch (err) {
     yield put(repoLoadingError(err));
   }
 }
-
 
 /**
  * Root saga manages watcher lifecycle
@@ -36,5 +34,5 @@ export default function* githubData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_REPOS, getRepos);
+  yield takeLatest(ADD_DONOR, addDonor);
 }
