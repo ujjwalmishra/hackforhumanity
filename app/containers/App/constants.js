@@ -18,3 +18,4 @@ export const DONOR_ADDED = 'boilerplate/App/DONOR_ADDED';
 export const LOGIN_USER = 'boilerplate/App/LOGIN_USER';
 export const ASK_DONATION = 'boilerplate/App/ASK_DONATION';
 export const SEARCH_DONOR = 'boilerplate/App/SEARCH_DONOR';
+export const SEARCHED_DONOR = 'boilerplate/App/SEARCHED_DONOR';

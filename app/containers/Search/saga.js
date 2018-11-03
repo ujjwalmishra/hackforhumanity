@@ -4,7 +4,7 @@
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { SEARCH_DONOR } from 'containers/App/constants';
-import { searchDonors, repoLoadingError } from 'containers/App/actions';
+import { searchDonors,searchedDonors, repoLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 
@@ -20,7 +20,7 @@ export function* searchDonor(action) {
     const data = yield call(request, requestURL);
   
     console.log("dispatching")
-    yield put(searchDonors(data.donors));
+    yield put(searchedDonors(data.donors));
   } catch (err) {
     yield put(repoLoadingError(err));
   }

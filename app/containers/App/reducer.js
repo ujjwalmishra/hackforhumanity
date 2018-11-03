@@ -19,7 +19,8 @@ import {
   ADD_DONOR,
   DONOR_ADDED,
   LOGIN_USER,
-  SEARCH_DONOR
+  SEARCH_DONOR,
+  SEARCHED_DONOR
 } from './constants';
 
 // The initial state of the App
@@ -40,8 +41,13 @@ function appReducer(state = initialState, action) {
       console.log(action.payload);
       return  state
       .set('loading', true)
+      .set('error', false);
+    case SEARCHED_DONOR:
+      console.log(action.payload);
+      return  state
+      .set('loading', false)
       .set('error', false)
-      .set('donors', action.payload);
+      .set('donors', action.payload);  
     case LOGIN_USER: 
       return state
         .set('loading', false)

@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
+import { Redirect } from 'react-router-dom';
 import './style.scss';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -20,6 +21,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     }
   }
 
+
   render() {
     const { loading, error, repos } = this.props;
     const reposListProps = {
@@ -27,47 +29,52 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       error,
       repos,
     };
+    if(this.props.username) {
+      return <Redirect to='/adddonor' />
+    }
+    else {
+      return (
+        <article>
+          <Helmet>
+            <title>Login Page</title>
+            <meta name="description" content="A React.js Boilerplate application homepage" />
+          </Helmet>
+          <div className="home-page">
+            <section>
+              <h2>Login/Registration</h2>
+              <form onSubmit={this.props.onSubmitForm}>
+                <label htmlFor="username">
+                Username:
+                  <input
+                    id="username"
+                    type="text"
+                    placeholder="Erica"
+                    name="username"
+                    value={this.props.username}
+                    onChange={this.props.onChangeUsername}
+                  />
+                </label>
+                <label htmlFor="password">
+                Password:
+                  <input
+                    id="password"
+                    type="password"
+                    value={this.props.password}
+                    onChange={this.props.onChangepassword}
+                  />
+                </label>
+                <input
+                  type="submit"
+                  className="btn btn-primary float-right"
+                  value="Submit" onClick={this.login} />
+              </form>
+              <ReposList {...reposListProps} />
+            </section>
+          </div>
+        </article>
+      );
+    }
 
-    return (
-      <article>
-        <Helmet>
-          <title>Login Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
-        </Helmet>
-        <div className="home-page">
-          <section>
-            <h2>Login/Registration</h2>
-            <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-              Username:
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="Erica"
-                  name="username"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-              <label htmlFor="password">
-              Password:
-                <input
-                  id="password"
-                  type="password"
-                  value={this.props.password}
-                  onChange={this.props.onChangepassword}
-                />
-              </label>
-              <input
-                type="submit"
-                className="btn btn-primary float-right"
-                value="Submit" />
-            </form>
-            <ReposList {...reposListProps} />
-          </section>
-        </div>
-      </article>
-    );
   }
 }
 

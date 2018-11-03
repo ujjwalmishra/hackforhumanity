@@ -19,7 +19,10 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(loginUser(evt.target[0].form.username.value));
+    if(evt && evt.target[0]) {
+      dispatch(loginUser(evt.target[0].form.username.value));
+    }
+
   }
 });
 

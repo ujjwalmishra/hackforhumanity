@@ -27,9 +27,11 @@ export default class Search extends React.PureComponent { // eslint-disable-line
   }
 
   handleChange(e) {
-    const item = e.target.id;
+    console.log(e.target.checked)
+    const item = e.target.name;
     const isChecked = e.target.checked;
     this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+    console.log(this.state.checkedItems.get("a"));
   }
   
   componentDidMount() {
@@ -46,78 +48,152 @@ export default class Search extends React.PureComponent { // eslint-disable-line
       error,
       repos,
     };
-
-    return (
-      <article>
-        <Helmet>
-          <title>Ask Donation</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
-        </Helmet>
-        <div className="askdonor-page col-sm-12">
-          <section>
-            <h2>Search Donors{this.props.message}</h2>
-            <form onSubmit={this.props.onSubmitForm}>
-              <div className="col-sm-12">
-              
-              <div>Choose Interests:</div>
-              <select name="interests" id="type" class="col-sm-6">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
-              </select>
-              </div>
-              <div className="col-sm-6">
-                <div>Amount Range</div>
-                <input
-                  id=""
-                  type="number"
-                  name="minimum"
-                  placeholder="Minimum"
-                  value={this.props.minimum}
-                />
-                                <input
-                  id=""
-                  type="number"
-                  name="maximum"
-                  placeholder="Maximum"
-                  value={this.props.maximum}
-                />
+    if(donors.length) {
+      return (
+        <article>
+          <Helmet>
+            <title>Ask Donation</title>
+            <meta name="description" content="A React.js Boilerplate application homepage" />
+          </Helmet>
+          <div className="askdonor-page col-sm-12">
+            <section>
+              <h2>Search Donors{this.props.message}</h2>
+              <form onSubmit={this.props.onSubmitForm}>
+                <div className="col-sm-12">
+                
+                <div>Choose Interests:</div>
+                <select name="interests" id="type" class="col-sm-6">
+                  <option value="1">Christmas give away</option>
+                  <option value="2">Minni's on the GO</option>
+                  <option value="3">Stock the shelf</option>
+                  <option value="4">Food drive</option>
+                  <option value="5">Other</option>
+                </select>
                 </div>
-                <div class="col-sm-12">
-             <div> Time Range </div>
-              <select name="type" id="type" class="col-sm-6">
-                <option value="lastmonth">Last Month</option>
-                <option value="sixmonth">Last Six Month</option>
-                <option value="year">Last Year</option>
-                <option value="custom">Custom</option>
-              </select>
-
-                </div>
-
-
-<input
-          type="submit"
-          className="btn btn-primary float-left"
-          value="Search"/>
-            </form>
-          </section>
+                <div className="col-sm-6">
+                  <div>Amount Range</div>
+                  <input
+                    id=""
+                    type="number"
+                    name="minimum"
+                    placeholder="Minimum"
+                    value={this.props.minimum}
+                  />
+                                  <input
+                    id=""
+                    type="number"
+                    name="maximum"
+                    placeholder="Maximum"
+                    value={this.props.maximum}
+                  />
+                  </div>
+                  <div class="col-sm-12">
+               <div> Time Range </div>
+                <select name="type" id="type" class="col-sm-6">
+                  <option value="lastmonth">Last Month</option>
+                  <option value="sixmonth">Last Six Month</option>
+                  <option value="year">Last Year</option>
+                  <option value="custom">Custom</option>
+                </select>
+  
+                  </div>
+  
+  
+  <input
+            type="submit"
+            className="btn btn-primary float-left"
+            value="Search"/>
+              </form>
+            </section>
+          </div>
+          
+        <section className="results" >
+        <React.Fragment>
+          {
+            donors.map(item => (
+              <label key={item.id} className="containerc">
+                {item.fullName}
+                <Checkbox name={item.id} checked={this.state.checkedItems.get(item.id)} onChange={this.handleChange} />
+                <span className="checkmark"></span>
+              </label>
+            ))
+          }
+        </React.Fragment>
+        <div className="actions" donors={donors.length} >
+        <button type="button" class="btn btn-success">Send Newsletter</button>
+        <button type="button" class="btn btn-success">Send text</button>
+        <button type="button" class="btn btn-success">Ask Donation Via text</button>
         </div>
-        
-      <section className="results" >
-      <React.Fragment>
-        {
-          donors.map(item => (
-            <label key={item.id}>
-              {item.fullName}
-              <Checkbox name={item.id} checked={this.state.checkedItems.get(item.id)} onChange={this.handleChange} />
-            </label>
-          ))
-        }
-      </React.Fragment>
-      </section>
-      </article>
-    );
+        </section>
+        </article>
+      );
+    }
+    else {
+      return (
+        <article>
+          <Helmet>
+            <title>Ask Donation</title>
+            <meta name="description" content="A React.js Boilerplate application homepage" />
+          </Helmet>
+          <div className="askdonor-page col-sm-12">
+            <section>
+              <h2>Search Donors{this.props.message}</h2>
+              <form onSubmit={this.props.onSubmitForm}>
+                <div className="col-sm-12">
+                
+                <div>Choose Interests:</div>
+                <select name="interests" id="type" class="col-sm-6">
+                  <option value="1">Christmas give away</option>
+                  <option value="2">Minni's on the GO</option>
+                  <option value="3">Stock the shelf</option>
+                  <option value="4">Food drive</option>
+                  <option value="5">Other</option>
+                </select>
+                </div>
+                <div className="col-sm-6">
+                  <div>Amount Range</div>
+                  <input
+                    id=""
+                    type="number"
+                    name="minimum"
+                    placeholder="Minimum"
+                    value={this.props.minimum}
+                  />
+                                  <input
+                    id=""
+                    type="number"
+                    name="maximum"
+                    placeholder="Maximum"
+                    value={this.props.maximum}
+                  />
+                  </div>
+                  <div class="col-sm-12">
+               <div> Time Range </div>
+                <select name="type" id="type" class="col-sm-6">
+                  <option value="lastmonth">Last Month</option>
+                  <option value="sixmonth">Last Six Month</option>
+                  <option value="year">Last Year</option>
+                  <option value="custom">Custom</option>
+                </select>
+  
+                  </div>
+  
+  
+  <input
+            type="submit"
+            className="btn btn-primary float-left"
+            value="Search"/>
+              </form>
+            </section>
+          </div>
+          
+        <section className="results" >
+
+        </section>
+        </article>
+      );    
+    }
+    
   }
 }
 
